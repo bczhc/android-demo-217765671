@@ -1,0 +1,3 @@
+[submodule "app/src/main/cpp/third_party/jni-lib"]
+	path = app/src/main/cpp/third_party/jni-lib
+	url = https://github.com/bczhc/jni

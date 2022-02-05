@@ -1,0 +1,6 @@
+[submodule "app/src/main/cpp/third_party/jni-lib"]
+	path = app/src/main/cpp/third_party/jni-lib
+	url = https://github.com/bczhc/jni
+[submodule "app/src/main/cpp/third_party/libmagic"]
+	path = app/src/main/cpp/third_party/libmagic
+	url = https://github.com/bczhc/ndk-libmagic.git
