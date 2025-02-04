@@ -4,8 +4,9 @@ set -e
 
 project="`readlink -f .`"
 
-# Change these envs!
-ndk_home=$ANDROID_HOME/ndk-ln
+# Change the env below!
+ndk_home=??
+
 toolchain_file=$ndk_home/build/cmake/android.toolchain.cmake
 
 cd app/src/main/cpp; mkdir build 2>/dev/null || true; cd build
