@@ -33,14 +33,11 @@ android {
         viewBinding true
     }
 
-    externalNativeBuild {
-        cmake {
-            version '3.18.1'
-            path file('src/main/cpp/CMakeLists.txt')
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
-
-    ndkVersion '22.1.7171670'
 }
 
 dependencies {

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e
+
+project="`readlink -f .`"
+
+ndk_home=$ANDROID_HOME/ndk-ln
+toolchain_file=$ndk_home/build/cmake/android.toolchain.cmake
+
+cd app/src/main/cpp; mkdir build 2>/dev/null || true; cd build
+cmake -DCMAKE_TOOLCHAIN_FILE="$toolchain_file" \
+  -DANDROID_ABI=arm64-v8a \
+  -DANDROID_PLATFORM=android-29 \
+  -G Ninja ..
+ninja
+
+# assert `libmyLib.so` is present now
+ls libmyLib.so
+
+cd "$project"
+mkdir app/libs/arm64-v8a -p || true 2>/dev/null
+cp -v app/src/main/cpp/build/*.so app/libs/arm64-v8a
+
+# build the app
+./gradlew asD
+
+echo; echo; echo
+echo 'Now inspect app/build/outputs/apk/debug/app-debug.apk,'
+echo 'decompress it, `libmyLib.so` is in the `lib` folder, which'
+echo 'is expected.'
+
