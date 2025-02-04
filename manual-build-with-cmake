@@ -21,7 +21,7 @@ ls libmyLib.so
 
 # Build and manually put them into `app/libs` folder.
 cd "$project"
-mkdir app/libs/arm64-v8a -p || true 2>/dev/null
+mkdir app/libs/arm64-v8a -p 2>/dev/null || true
 cp -v app/src/main/cpp/build/*.so app/libs/arm64-v8a
 
 # pack the App.
