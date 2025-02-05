@@ -1,0 +1,32 @@
+commit a5a0289f6c097faddbe4b48114d1ebb43f0e83c3
+Author: Zhai Can <bczhc0@126.com>
+Date:   Wed Feb 5 11:23:47 2025 +0800
+
+    CMake: explicitly use SHARED build type on myLib
+
+diff --git a/app/src/main/cpp/third_party/jni-lib/CMakeLists.txt b/app/src/main/cpp/third_party/jni-lib/CMakeLists.txt
+index 007ee3d..d801e79 100644
+--- a/app/src/main/cpp/third_party/jni-lib/CMakeLists.txt
++++ b/app/src/main/cpp/third_party/jni-lib/CMakeLists.txt
+@@ -3,17 +3,10 @@ project(jni)
+ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ set(CMAKE_CXX_STANDARD 17)
+ 
+-set(LIB_BUILD_TYPE SHARED)
+-if (BUILD_STATIC)
+-    if (BUILD_STATIC EQUAL 1)
+-        set(LIB_BUILD_TYPE STATIC)
+-    endif()
+-endif ()
+-
+-add_library(my-sqlite3 ${LIB_BUILD_TYPE} third_party/my-cpp-lib/third_party/sqlite3-single-c/sqlite3.c)
++add_library(my-sqlite3 SHARED third_party/my-cpp-lib/third_party/sqlite3-single-c/sqlite3.c)
+ 
+ add_library(
+-        myLib ${LIB_BUILD_TYPE}
++        myLib SHARED
+         third_party/my-cpp-lib/string.cpp
+         third_party/my-cpp-lib/sqlite3.cpp
+         third_party/my-cpp-lib/utf8.cpp
+ 
+
